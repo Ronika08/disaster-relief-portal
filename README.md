@@ -115,11 +115,6 @@ disaster-relief-portal/
 
 ---
 
-## 📸 Screenshots (Optional)
-
-*Add screenshots here for better presentation*
-
----
 
 ## 🎯 Future Enhancements
 
