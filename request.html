@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Details - Disaster Relief Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="logo">🚨 ReliefHub</div>
+        <div class="user-role">Request Details</div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <div class="card">
+            <button onclick="goBack()" class="back-button">← Back to Dashboard</button>
+            <h2 id="request-title">Emergency Request Details</h2>
+
+            <div class="request-header">
+                <div class="request-priority" id="request-priority">
+                    <span class="priority-badge">HIGH</span>
+                </div>
+                <div class="request-status" id="request-status">
+                    <span class="status pending">Pending</span>
+                </div>
+            </div>
+
+            <div class="request-details">
+                <div class="detail-section">
+                    <h3>Request Information</h3>
+                    <p><strong>Type:</strong> <span id="request-type"></span></p>
+                    <p><strong>Location:</strong> <span id="request-location"></span></p>
+                    <p><strong>Submitted:</strong> <span id="request-timestamp"></span></p>
+                </div>
+
+                <div class="detail-section">
+                    <h3>Victim Details</h3>
+                    <p><strong>Name:</strong> <span id="victim-name"></span></p>
+                    <p><strong>Description:</strong> <span id="request-description"></span></p>
+                </div>
+
+                <div class="detail-section">
+                    <h3>Assignment Status</h3>
+                    <p><strong>Assigned Volunteer:</strong> <span id="assigned-volunteer"></span></p>
+                    <p><strong>Assigned At:</strong> <span id="assigned-at"></span></p>
+                    <p><strong>Completed At:</strong> <span id="completed-at"></span></p>
+                </div>
+
+                <div class="detail-section">
+                    <h3>Request Timeline</h3>
+                    <div id="request-timeline"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>Contact: relief@example.com | Emergency: 123-456-7890</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="request.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location Details - Disaster Relief Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="logo">🚨 ReliefHub</div>
+        <div class="user-role">Location Details</div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <div class="card">
+            <button onclick="goBack()" class="back-button">← Back to Map</button>
+            <h2 id="location-name">Location Details</h2>
+            <div class="location-details">
+                <div class="detail-section">
+                    <h3>Location Information</h3>
+                    <p><strong>Type:</strong> <span id="location-type"></span></p>
+                    <p><strong>Status:</strong> <span id="location-status"></span></p>
+                    <p><strong>Coordinates:</strong> <span id="location-coords"></span></p>
+                </div>
+                <div class="detail-section">
+                    <h3>Instructions & Notes</h3>
+                    <div id="location-instructions"></div>
+                </div>
+                <div class="detail-section">
+                    <h3>Proximity Information</h3>
+                    <p><strong>Distance from you:</strong> <span id="location-distance"></span></p>
+                    <p><strong>Nearest shelter:</strong> <span id="nearest-shelter"></span></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>Contact: relief@example.com | Emergency: 123-456-7890</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="location.js"></script>
+</body>
+</html>

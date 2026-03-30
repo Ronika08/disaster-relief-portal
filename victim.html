@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victim Dashboard - Disaster Relief Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="logo">🚨 ReliefHub</div>
+        <div class="alert-indicators">
+            <div class="alert-indicator emergency">
+                <span>⚠️</span> Active Emergencies: 3
+            </div>
+            <div class="alert-indicator warning">
+                <span>🔔</span> Warnings: 5
+            </div>
+        </div>
+        <div class="user-role">Victim Dashboard</div>
+    </div>
+
+    <!-- Hero Emergency Alert -->
+    <div class="hero-alert">
+        <div class="alert-icon">🚨</div>
+        <div class="alert-message">Stay safe. Help is on the way. Follow evacuation routes.</div>
+        <div class="alert-actions">
+            <button class="view-map">View Safe Routes</button>
+            <button class="acknowledge">I'm Safe</button>
+            <button class="send-help">Need Immediate Help</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Quick Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="totalRequests">0</div>
+                <div class="stat-label">Your Active Requests</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="pendingRequests">0</div>
+                <div class="stat-label">Pending</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="resolvedRequests">0</div>
+                <div class="stat-label">Resolved</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Request Emergency Assistance</h2>
+            <form id="requestForm">
+                <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Current Location:</label>
+                    <input type="text" id="location" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="requestType">Type of Assistance Needed:</label>
+                    <select id="requestType" required>
+                        <option value="">Select assistance type...</option>
+                        <option value="food">Food & Water</option>
+                        <option value="shelter">Emergency Shelter</option>
+                        <option value="medical">Medical Help</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="urgency">Urgency Level:</label>
+                    <select id="urgency" required>
+                        <option value="low">Low - Can wait</option>
+                        <option value="medium">Medium - Within hours</option>
+                        <option value="high">High - Immediate danger</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Describe your situation:</label>
+                    <textarea id="description" rows="4" placeholder="Please provide details about your needs..."></textarea>
+                </div>
+
+                <button type="submit" aria-label="Submit your emergency assistance request">Submit Emergency Request</button>
+            </form>
+            <div class="offline-message" id="offlineMessage" style="display: none;">
+                <p>💾 Saved locally. Will sync when online.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Your Request Status</h2>
+            <div id="requestsList"></div>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <ul>
+            <li><a href="#" onclick="goBack()"><span class="nav-icon">🏠</span><br>Home</a></li>
+            <li><a href="#"><span class="nav-icon">🚨</span><br>Alerts</a></li>
+            <li><a href="#"><span class="nav-icon">🗺️</span><br>Map</a></li>
+            <li><a href="#"><span class="nav-icon">🆘</span><br>Help</a></li>
+        </ul>
+    </nav>
+
+    <!-- Floating SOS Button -->
+    <button class="sos-button" onclick="emergencySOS()">SOS</button>
+
+    <!-- Footer -->
+    <footer>
+        <p>Contact: relief@example.com | Emergency: 123-456-7890</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="victim.js"></script>
+</body>
+</html>

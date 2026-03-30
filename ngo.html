@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NGO/Admin Dashboard - Disaster Relief Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="logo">🚨 ReliefHub</div>
+        <div class="alert-indicators">
+            <div class="alert-indicator emergency">
+                <span>⚠️</span> Critical Alerts: 5
+            </div>
+            <div class="alert-indicator warning">
+                <span>🔔</span> Active Operations: 12
+            </div>
+        </div>
+        <div class="user-role">NGO Command Center</div>
+    </div>
+
+    <!-- Hero Emergency Alert -->
+    <div class="hero-alert">
+        <div class="alert-icon">🚨</div>
+        <div class="alert-message">Multiple disaster zones active. Coordinate response teams and allocate resources immediately.</div>
+        <div class="alert-actions">
+            <button class="view-map">View Crisis Map</button>
+            <button class="acknowledge">Activate Emergency Protocol</button>
+            <button class="send-help">Deploy Additional Teams</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Quick Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="totalRequests">0</div>
+                <div class="stat-label">Total Requests</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="pendingRequests">0</div>
+                <div class="stat-label">Pending</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="inProgressRequests">0</div>
+                <div class="stat-label">In Progress</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="resolvedRequests">0</div>
+                <div class="stat-label">Resolved</div>
+            </div>
+        </div>
+
+        <!-- Central Live Map -->
+        <div class="card">
+            <h2>Live Crisis Response Map</h2>
+            <p>Real-time view of all requests, volunteers, and relief operations.</p>
+            <div id="map"></div>
+        </div>
+
+        <!-- Action Panels -->
+        <div class="card">
+            <h2>Request Management & Assignment</h2>
+
+            <!-- Request Filters -->
+            <div class="request-filters">
+                <div class="filter-group">
+                    <label for="filter-urgency">Filter by Urgency:</label>
+                    <select id="filter-urgency">
+                        <option value="">All Urgencies</option>
+                        <option value="high">High Priority</option>
+                        <option value="medium">Medium Priority</option>
+                        <option value="low">Low Priority</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filter-type">Filter by Type:</label>
+                    <select id="filter-type">
+                        <option value="">All Types</option>
+                        <option value="food">Food</option>
+                        <option value="shelter">Shelter</option>
+                        <option value="medical">Medical</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filter-status">Filter by Status:</label>
+                    <select id="filter-status">
+                        <option value="">All Statuses</option>
+                        <option value="Pending">Pending</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Resolved">Resolved</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="sort-by">Sort by:</label>
+                    <select id="sort-by">
+                        <option value="latest">Latest First</option>
+                        <option value="urgency">Highest Urgency</option>
+                        <option value="oldest">Oldest First</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="requestsList"></div>
+        </div>
+
+        <!-- Volunteer Coordination -->
+        <div class="card">
+            <h2>Volunteer Coordination</h2>
+            <div id="volunteersList"></div>
+        </div>
+
+        <!-- Resource Availability Overview -->
+        <div class="card">
+            <h2>Resource Availability Overview</h2>
+            <div class="resource-overview">
+                <div class="resource-item">
+                    <div class="resource-icon">🍚</div>
+                    <div class="resource-details">
+                        <h3>Food Packets</h3>
+                        <div class="resource-count">1,250 available</div>
+                    </div>
+                </div>
+                <div class="resource-item">
+                    <div class="resource-icon">🏠</div>
+                    <div class="resource-details">
+                        <h3>Shelter Capacity</h3>
+                        <div class="resource-count">85 beds available</div>
+                    </div>
+                </div>
+                <div class="resource-item">
+                    <div class="resource-icon">💊</div>
+                    <div class="resource-details">
+                        <h3>Medical Supplies</h3>
+                        <div class="resource-count">320 kits available</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Emergency Communications</h2>
+            <form id="announcementForm">
+                <div class="form-group">
+                    <label for="announcement">Broadcast Emergency Alert:</label>
+                    <textarea id="announcement" rows="3" placeholder="Enter critical information for all users..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="announcement-type">Alert Type:</label>
+                    <select id="announcement-type" required>
+                        <option value="info">Info</option>
+                        <option value="alert">Alert</option>
+                        <option value="safety">Safety</option>
+                    </select>
+                </div>
+                <button type="submit" aria-label="Broadcast emergency alert to all users">Broadcast Alert</button>
+            </form>
+            <h3>Recent Announcements</h3>
+            <div id="announcementsList"></div>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <ul>
+            <li><a href="#" onclick="goBack()"><span class="nav-icon">🏠</span><br>Home</a></li>
+            <li><a href="#"><span class="nav-icon">🚨</span><br>Alerts</a></li>
+            <li><a href="#"><span class="nav-icon">🗺️</span><br>Map</a></li>
+            <li><a href="#"><span class="nav-icon">🆘</span><br>Help</a></li>
+        </ul>
+    </nav>
+
+    <!-- Floating SOS Button -->
+    <button class="sos-button" onclick="emergencySOS()">SOS</button>
+
+    <!-- Footer -->
+    <footer>
+        <p>Contact: relief@example.com | Emergency: 123-456-7890</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="ngo.js"></script>
+</body>
+</html>

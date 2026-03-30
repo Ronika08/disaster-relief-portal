@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Announcement Details - Disaster Relief Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="logo">🚨 ReliefHub</div>
+        <div class="user-role">Official Announcement</div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <div class="card">
+            <button onclick="goBack()" class="back-button">← Back to Dashboard</button>
+
+            <div class="announcement-header">
+                <div class="announcement-tag-large" id="announcement-tag">ALERT</div>
+                <div>
+                    <h2>Official Emergency Announcement</h2>
+                    <p id="announcement-timestamp">Posted: Just now</p>
+                </div>
+            </div>
+
+            <div class="announcement-content">
+                <div class="detail-section">
+                    <h3>Message</h3>
+                    <div id="announcement-message">Loading announcement...</div>
+                </div>
+
+                <div class="detail-section">
+                    <h3>Recommended Actions</h3>
+                    <div id="recommended-actions">
+                        <ul>
+                            <li>Stay informed through official channels</li>
+                            <li>Follow evacuation instructions if issued</li>
+                            <li>Help neighbors when safe to do so</li>
+                            <li>Conserve resources and stay calm</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h3>Additional Information</h3>
+                    <div id="additional-info">
+                        <p><strong>Source:</strong> Disaster Management Authority</p>
+                        <p><strong>Priority:</strong> <span id="announcement-priority">High</span></p>
+                        <p><strong>Valid Until:</strong> Further notice</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>Contact: relief@example.com | Emergency: 123-456-7890</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="announcement.js"></script>
+</body>
+</html>

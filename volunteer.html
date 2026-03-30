@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Dashboard - Disaster Relief Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="logo">🚨 ReliefHub</div>
+        <div class="alert-indicators">
+            <div class="alert-indicator emergency">
+                <span>⚠️</span> Active Emergencies: 3
+            </div>
+            <div class="alert-indicator warning">
+                <span>🔔</span> New Requests: 7
+            </div>
+        </div>
+        <div class="user-role">Volunteer Dashboard</div>
+    </div>
+
+    <!-- Hero Emergency Alert -->
+    <div class="hero-alert">
+        <div class="alert-icon">🚨</div>
+        <div class="alert-message">Urgent volunteer response needed. Multiple high-priority requests incoming.</div>
+        <div class="alert-actions">
+            <button class="view-map">View Assignment Map</button>
+            <button class="acknowledge">Ready to Help</button>
+            <button class="send-help">Request Backup</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Quick Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="availableRequestsCount">0</div>
+                <div class="stat-label">Available Requests</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="myActiveTasks">0</div>
+                <div class="stat-label">My Active Tasks</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="completedTasks">0</div>
+                <div class="stat-label">Tasks Completed</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Volunteer Profile & Availability</h2>
+            <form id="volunteerForm">
+                <div class="form-group">
+                    <label for="vol-name">Full Name:</label>
+                    <input type="text" id="vol-name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Contact Email:</label>
+                    <input type="email" id="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="skills">Specialized Skills:</label>
+                    <select id="skills" required>
+                        <option value="">Select your expertise...</option>
+                        <option value="medical">Medical & First Aid</option>
+                        <option value="logistics">Logistics & Transport</option>
+                        <option value="construction">Construction & Repairs</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="available">
+                        <input type="checkbox" id="available" checked> I am available for assignments
+                    </label>
+                </div>
+
+                <button type="submit" aria-label="Update your volunteer profile and availability status">Update Profile & Availability</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h2>Available Emergency Requests</h2>
+            <p>Click "Accept Task" to take responsibility for helping with these urgent needs.</p>
+            <div id="availableRequests"></div>
+        </div>
+
+        <div class="card">
+            <h2>My Assigned Tasks</h2>
+            <div id="myTasks"></div>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <ul>
+            <li><a href="#" onclick="goBack()"><span class="nav-icon">🏠</span><br>Home</a></li>
+            <li><a href="#"><span class="nav-icon">🚨</span><br>Alerts</a></li>
+            <li><a href="#"><span class="nav-icon">🗺️</span><br>Map</a></li>
+            <li><a href="#"><span class="nav-icon">🆘</span><br>Help</a></li>
+        </ul>
+    </nav>
+
+    <!-- Floating SOS Button -->
+    <button class="sos-button" onclick="emergencySOS()">SOS</button>
+
+    <!-- Footer -->
+    <footer>
+        <p>Contact: relief@example.com | Emergency: 123-456-7890</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="volunteer.js"></script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Relief Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="logo">🚨 ReliefHub</div>
+
+        <div class="alert-indicators">
+            <div class="alert-indicator emergency">
+                <span>⚠️</span> Active Emergencies: 3
+            </div>
+            <div class="alert-indicator warning">
+                <span>🔔</span> Warnings: 5
+            </div>
+        </div>
+
+        <div class="user-role">Public Access</div>
+    </div>
+
+    <!-- Hero Emergency Alert -->
+    <div class="hero-alert flood-alert" onclick="window.location.href='alert.html?type=flood'">
+        <div class="alert-icon">🌊</div>
+        <div class="alert-type">FLOOD ALERT</div>
+        <div class="alert-message">
+            Critical flood emergency in District X. Immediate evacuation required. Water levels rising rapidly.
+        </div>
+        <div class="alert-actions">
+            <button class="view-map" aria-label="View emergency map">View Map</button>
+            <button class="get-directions" aria-label="Get evacuation directions">Get Directions</button>
+            <button class="im-safe" aria-label="Mark yourself as safe">I'm Safe</button>
+        </div>
+    </div>
+
+    <!-- Additional Alert Types (Static Examples) -->
+    <div class="hero-alert cyclone-alert" style="display: none;">
+        <div class="alert-icon">🌀</div>
+        <div class="alert-type">CYCLONE WARNING</div>
+        <div class="alert-message">
+            Cyclone approaching coastal areas. Secure property and move to shelters immediately.
+        </div>
+        <div class="alert-actions">
+            <button class="view-map">View Map</button>
+            <button class="get-directions">Get Directions</button>
+            <button class="im-safe">I'm Safe</button>
+        </div>
+    </div>
+
+    <div class="hero-alert heatwave-alert" style="display: none;">
+        <div class="alert-icon">☀️</div>
+        <div class="alert-type">HEATWAVE ALERT</div>
+        <div class="alert-message">
+            Extreme heat conditions. Stay hydrated and avoid outdoor activities during peak hours.
+        </div>
+        <div class="alert-actions">
+            <button class="view-map">View Map</button>
+            <button class="safety-info">Safety Tips</button>
+            <button class="im-safe">I'm Safe</button>
+        </div>
+    </div>
+
+    <!-- Role Selection -->
+    <main class="role-selection">
+        <!-- Emergency Location Search and Map -->
+        <div class="emergency-search">
+            <input
+                type="text"
+                id="locationSearch"
+                placeholder="Search affected area (e.g. Chennai, Assam, Kerala)"
+                aria-label="Search affected area"
+            />
+            <ul id="suggestions"></ul>
+        </div>
+        <div style="position: relative;">
+            <div id="map" style="height: 300px; margin: 1rem 0;"></div>
+            <!-- Map Legend -->
+            <div class="map-legend">
+                <h4>Map Legend</h4>
+                <div class="legend-item">
+                    <span class="legend-marker emergency-marker"></span>
+                    Emergency Zone
+                </div>
+                <div class="legend-item">
+                    <span class="legend-marker safe-marker"></span>
+                    Safe Zone
+                </div>
+                <div class="legend-item">
+                    <span class="legend-marker shelter-marker"></span>
+                    Shelter Location
+                </div>
+            </div>
+            <!-- Location Awareness Labels -->
+            <div class="location-labels">
+                <div class="location-alert">🚨 Nearby Emergency: Flood Zone 2km away</div>
+                <div class="location-info">🏠 Nearest Shelter: Community Center, 1.5km</div>
+                <div class="location-safe">✅ You are in a safe zone</div>
+            </div>
+        </div>
+        <h2>Select Your Role to Access the Portal</h2>
+
+        <div class="roles">
+            <button onclick="selectRole('victim')" aria-label="Access victim dashboard to request help">
+                <span>👤</span><br>
+                Victim<br>
+                Request Help
+            </button>
+
+            <button onclick="selectRole('volunteer')" aria-label="Access volunteer dashboard to offer help">
+                <span>🤝</span><br>
+                Volunteer<br>
+                Offer Help
+            </button>
+
+            <button onclick="selectRole('ngo')" aria-label="Access NGO admin dashboard to manage relief">
+                <span>🏢</span><br>
+                NGO/Admin<br>
+                Manage Relief
+            </button>
+        </div>
+    </main>
+
+    <!-- What Help Is Needed Board -->
+    <section class="help-needed-board">
+        <div class="card">
+            <h2>What Help Is Needed Right Now</h2>
+            <p>Urgent resource requests from affected communities:</p>
+            <div class="help-items">
+                <div class="help-item urgent" onclick="window.location.href='resource.html?type=food'">
+                    <span class="help-icon">🍚</span>
+                    <div class="help-details">
+                        <h3>Food & Water</h3>
+                        <p>500 families need immediate food supplies</p>
+                    </div>
+                </div>
+                <div class="help-item urgent" onclick="window.location.href='resource.html?type=shelter'">
+                    <span class="help-icon">🏠</span>
+                    <div class="help-details">
+                        <h3>Emergency Shelter</h3>
+                        <p>200 people displaced, need temporary housing</p>
+                    </div>
+                </div>
+                <div class="help-item high" onclick="window.location.href='resource.html?type=medical'">
+                    <span class="help-icon">💊</span>
+                    <div class="help-details">
+                        <h3>Medical Supplies</h3>
+                        <p>Critical medicines and first aid needed</p>
+                    </div>
+                </div>
+                <div class="help-item medium" onclick="window.location.href='resource.html?type=general'">
+                    <span class="help-icon">🧥</span>
+                    <div class="help-details">
+                        <h3>Blankets & Clothing</h3>
+                        <p>Warm clothing for cold weather relief</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transparency and Trust Signals -->
+    <section class="transparency-section">
+        <div class="card">
+            <h2>Our Impact & Transparency</h2>
+            <div class="trust-stats">
+                <div class="trust-stat">
+                    <div class="stat-number" id="public-total-requests">0</div>
+                    <div class="stat-label">Requests Received</div>
+                </div>
+                <div class="trust-stat">
+                    <div class="stat-number" id="public-resolved-requests">0</div>
+                    <div class="stat-label">Requests Resolved</div>
+                </div>
+                <div class="trust-stat">
+                    <div class="stat-number">15</div>
+                    <div class="stat-label">Active NGOs</div>
+                </div>
+                <div class="trust-stat">
+                    <div class="stat-number" id="public-active-volunteers">0</div>
+                    <div class="stat-label">Registered Volunteers</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <ul>
+            <li><a href="#"><span class="nav-icon">🏠</span><br>Home</a></li>
+            <li><a href="#"><span class="nav-icon">🚨</span><br>Alerts</a></li>
+            <li><a href="#"><span class="nav-icon">🗺️</span><br>Map</a></li>
+            <li><a href="#"><span class="nav-icon">🆘</span><br>Help</a></li>
+        </ul>
+    </nav>
+
+    <!-- Floating SOS Button -->
+    <button class="sos-button" aria-label="Send emergency SOS">
+        SOS
+    </button>
+
+    <!-- Footer -->
+    <footer>
+        Contact:
+        <a href="mailto:relief@example.com">relief@example.com</a> |
+        Emergency: <strong>123-456-7890</strong>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>

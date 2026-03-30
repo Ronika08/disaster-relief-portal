@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alert Details - Disaster Relief Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="logo">🚨 ReliefHub</div>
+        <div class="user-role">Emergency Alert</div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <div class="card">
+            <button onclick="goBack()" class="back-button">← Back to Dashboard</button>
+            <div class="alert-header">
+                <div class="alert-icon-large" id="alert-icon">🚨</div>
+                <div>
+                    <h2 id="alert-type">Alert Type</h2>
+                    <p id="alert-timestamp">Posted: Just now</p>
+                </div>
+            </div>
+
+            <div class="alert-details">
+                <div class="detail-section">
+                    <h3>Affected Area</h3>
+                    <p id="affected-area">Area information</p>
+                </div>
+
+                <div class="detail-section">
+                    <h3>Alert Message</h3>
+                    <div id="alert-message">Alert details</div>
+                </div>
+
+                <div class="detail-section">
+                    <h3>Safety Instructions</h3>
+                    <div id="safety-instructions">
+                        <ul>
+                            <li>Follow official evacuation routes</li>
+                            <li>Stay tuned to emergency broadcasts</li>
+                            <li>Help neighbors if safe to do so</li>
+                            <li>Conserve resources and stay calm</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h3>Recommended Actions</h3>
+                    <div class="action-buttons">
+                        <button onclick="viewMap()" class="btn-primary">View Affected Area</button>
+                        <button onclick="getDirections()" class="btn-secondary">Get Safe Directions</button>
+                        <button onclick="imSafe()" class="btn-success">I'm Safe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>Contact: relief@example.com | Emergency: 123-456-7890</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="alert.js"></script>
+</body>
+</html>

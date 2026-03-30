@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource Details - Disaster Relief Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="logo">🚨 ReliefHub</div>
+        <div class="user-role">Resource Details</div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <div class="card">
+            <button onclick="goBack()" class="back-button">← Back to Dashboard</button>
+            <div class="resource-header">
+                <div class="resource-icon-large" id="resource-icon">📦</div>
+                <div>
+                    <h2 id="resource-name">Resource Details</h2>
+                    <div class="resource-availability" id="resource-availability">
+                        <span class="availability-badge">Available</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="resource-details">
+                <div class="detail-section">
+                    <h3>Capacity & Availability</h3>
+                    <p id="resource-capacity">Capacity information</p>
+                    <p id="resource-location">Location information</p>
+                </div>
+
+                <div class="detail-section">
+                    <h3>Facilities & Services</h3>
+                    <div id="resource-facilities">
+                        <ul>
+                            <li>Loading facilities...</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h3>Usage Guidelines</h3>
+                    <div id="resource-guidelines">
+                        <ul>
+                            <li>Loading guidelines...</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h3>Coordination Contact</h3>
+                    <div id="resource-contact">
+                        <p><strong>Emergency Coordinator:</strong> relief@example.com</p>
+                        <p><strong>Hotline:</strong> 123-456-7890</p>
+                        <p><strong>Operating Hours:</strong> 24/7 during emergency</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>Contact: relief@example.com | Emergency: 123-456-7890</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="resource.js"></script>
+</body>
+</html>
